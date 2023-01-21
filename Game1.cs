@@ -4,49 +4,54 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Client;
 
-public class Game1 : Game
+public class Game1 : Microsoft.Xna.Framework.Game
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+	private GraphicsDeviceManager _graphics;
+	private SpriteBatch _spriteBatch;
+	public Game.Camera Camera { get; private set; }
+	public Game1 Game { get; private set; }
 
-    public Game1()
-    {
-        _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
-        IsMouseVisible = true;
-        Window.AllowUserResizing = true;
-    }
+	public Game1()
+	{
+		_graphics = new GraphicsDeviceManager(this);
+		Content.RootDirectory = "Content";
+		IsMouseVisible = true;
+		Window.AllowUserResizing = true;
 
-    protected override void Initialize()
-    {
-        // TODO: Add your initialization logic here
-        Window.Title = "Mega game";
-        base.Initialize();
-    }
+		Components.Add(new Game.Player(this));
 
-    protected override void LoadContent()
-    {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+		Camera = new Game.Camera(this);
+	}
 
-        // TODO: use this.Content to load your game content here
-    }
+	protected override void Initialize()
+	{
+		// TODO: Add your initialization logic here
+		Window.Title = "Mega game";
 
-    protected override void Update(GameTime gameTime)
-    {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+		base.Initialize();
+	}
 
-        // TODO: Add your update logic here
+	protected override void LoadContent()
+	{
+		_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        base.Update(gameTime);
-    }
+		base.LoadContent();
+	}
 
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+	protected override void Update(GameTime gameTime)
+	{
+		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+			Exit();
 
-        // TODO: Add your drawing code here
+		Camera.Update(GraphicsDevice.Viewport);
 
-        base.Draw(gameTime);
-    }
+		base.Update(gameTime);
+	}
+
+	protected override void Draw(GameTime gameTime)
+	{
+		GraphicsDevice.Clear(Color.CornflowerBlue);
+
+		base.Draw(gameTime);
+	}
 }

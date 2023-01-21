@@ -1,11 +1,33 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace Client;
+namespace Client.Game;
 
-abstract class Entity 
+public abstract class Entity : GameComponent
 {
-	public virtual int Health { get; set; }
+	protected SpriteBatch spriteBatch;
+	public Entity(Microsoft.Xna.Framework.Game game) : base(game) 
+	{
 
-	public virtual void Update(GameTime gameTime) {}
-	public virtual void Draw(GameTime gameTime) {}
+	}
+
+	~Entity() {}
+}
+
+public abstract class DrawableEntity : DrawableGameComponent
+{
+	protected SpriteBatch spriteBatch;
+	public DrawableEntity(Microsoft.Xna.Framework.Game game) : base(game) 
+	{
+
+	}
+
+	protected override void LoadContent()
+	{
+		spriteBatch = new SpriteBatch(GraphicsDevice);
+
+		base.LoadContent();
+	}
+
+	~DrawableEntity() {}
 }
