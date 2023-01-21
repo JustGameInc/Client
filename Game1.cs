@@ -14,12 +14,13 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        Window.AllowUserResizing = true;
     }
 
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
+        Window.Title = "Mega game";
         base.Initialize();
     }
 
