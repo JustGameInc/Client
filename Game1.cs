@@ -17,10 +17,13 @@ namespace MyGame
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            Window.AllowUserResizing = true;
         }
 
         protected override void Initialize()
         {
+            Window.Title = "Mega game";
+
             base.Initialize();
         }
 
