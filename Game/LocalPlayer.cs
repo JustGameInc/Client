@@ -16,6 +16,7 @@ public class LocalPlayer : Player
 
 	public LocalPlayer(Microsoft.Xna.Framework.Game game) : base(game)
 	{
+		DrawOrder = 1;
 		Size = new Vector2(40, 60);
 	}
 
@@ -55,8 +56,9 @@ public class LocalPlayer : Player
 		
 
 		Velocity = NormalizeVelocity(Velocity, MaxSpeed, delta);
-		Position += Velocity;
 		Velocity = SubstractVelocity(Velocity, delta, Speed);
+
+		Position += Velocity;
 
 		base.Update(gameTime);
 	}

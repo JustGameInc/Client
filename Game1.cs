@@ -46,18 +46,19 @@ public class Game1 : Microsoft.Xna.Framework.Game
 		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 			Exit();
 
-		Camera.Bounds = GraphicsDevice.Viewport.Bounds;
-		Camera.Position = LocalPlayer.Position + LocalPlayer.Size;
-
 		base.Update(gameTime);
+
+		Camera.Position = LocalPlayer.Position + LocalPlayer.Size;
 	}
 
 	protected override void Draw(GameTime gameTime)
 	{
 		GraphicsDevice.Clear(Color.CornflowerBlue);
+		Camera.Bounds = GraphicsDevice.Viewport.Bounds;
 
 		base.Draw(gameTime);
 	}
 
 	public static Game.Camera GetCamera(Microsoft.Xna.Framework.Game game) => (game as Game1).Camera;
+	public static Game.LocalPlayer GetLocalPlayer(Microsoft.Xna.Framework.Game game) => (game as Game1).LocalPlayer;
 }
