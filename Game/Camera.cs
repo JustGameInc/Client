@@ -3,9 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Client.Game;
 
-public class Camera
+public class Camera : GameComponent
 {
-	private Game1 _game;
 
 	public Vector2 Position { get; set; }
 	public Vector2 Rotation { get; set; }
@@ -13,14 +12,18 @@ public class Camera
 	public Rectangle VisibleArea { get; set; }
 	public Matrix Transform { get; protected set; }
 
-	public Camera(Game1 game)
+	public Camera(Microsoft.Xna.Framework.Game game) : base(game)
 	{
-		_game = game;
-		Bounds = game.GraphicsDevice.Viewport.Bounds;
 		Position = Vector2.Zero;
 	}
 
-	private void UpdateMatrix()
+	public override void Initialize()
+	{
+		Bounds = Game.GraphicsDevice.Viewport.Bounds;
+		base.Initialize();
+	}
+
+	public void UpdateMatrix()
 	{
 		Transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
 			Matrix.CreateScale(1f) *
@@ -32,8 +35,8 @@ public class Camera
 		Position += moveVector;
 	}
 
-	public void Update(Viewport viewport) 
+	public override void Update(GameTime gameTime)
 	{
-		Bounds = viewport.Bounds;
+		UpdateMatrix();
 	}
 }
