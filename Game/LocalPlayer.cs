@@ -9,6 +9,7 @@ public class LocalPlayer : Player
 {
 	public Texture2D Sprite { get; set;}
 	public Vector2 Size { get; set;}
+
 	public Vector2 Velocity { get; set; } = Vector2.Zero;
 	
 	public Vector2 Speed { get; set; } = new Vector2(2000f, 2000f);
