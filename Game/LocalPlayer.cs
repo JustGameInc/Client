@@ -69,7 +69,7 @@ public class LocalPlayer : Player
 
 	public override void Draw(GameTime gameTime)
 	{
-		spriteBatch.Begin();
+		spriteBatch.Begin(transformMatrix: Game1.GetCamera(Game).Transform);
 		spriteBatch.Draw(_sprite, new Rectangle((int)Position.X, (int)Position.Y, 40, 60), Color.White);
 		spriteBatch.End();
 

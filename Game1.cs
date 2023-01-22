@@ -53,4 +53,6 @@ public class Game1 : Microsoft.Xna.Framework.Game
 
 		base.Draw(gameTime);
 	}
+
+	public static Game.Camera GetCamera(Microsoft.Xna.Framework.Game game) => (game as Game1).Camera;
 }
