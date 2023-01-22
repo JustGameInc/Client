@@ -11,8 +11,8 @@ public class LocalPlayer : Player
 	public Vector2 Size { get; set;}
 	public Vector2 Velocity { get; set; } = Vector2.Zero;
 	
-	public Vector2 Speed { get; set; } = new Vector2(100f, 100f);
-	public Vector2 MaxSpeed { get; set; } = new Vector2(1000f, 1000f);
+	public Vector2 Speed { get; set; } = new Vector2(2000f, 2000f);
+	public Vector2 MaxSpeed { get; set; } = new Vector2(2000f, 2000f);
 
 	public LocalPlayer(Microsoft.Xna.Framework.Game game) : base(game)
 	{
