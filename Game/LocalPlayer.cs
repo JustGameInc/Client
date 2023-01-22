@@ -45,11 +45,11 @@ public class LocalPlayer : Player
 		var delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
 		if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.S))
 			Velocity += Velocity.Y <= MaxSpeed.Y ? Vector2.UnitY * Speed.Y * delta : Vector2.Zero;
-		if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.W))
+		if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.W))
 			Velocity -= Velocity.Y <= MaxSpeed.Y ? Vector2.UnitY * Speed.Y * delta : Vector2.Zero;
-		if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D))
+		if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.D))
 			Velocity += Velocity.X <= MaxSpeed.X ? Vector2.UnitX * Speed.X * delta : Vector2.Zero;
-		if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.A))
+		if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.A))
 			Velocity -= Velocity.X <= MaxSpeed.X ? Vector2.UnitX * Speed.X * delta : Vector2.Zero;
 		
 

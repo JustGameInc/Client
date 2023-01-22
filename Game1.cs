@@ -28,7 +28,7 @@ public class Game1 : Microsoft.Xna.Framework.Game
 	protected override void Initialize()
 	{
 		// TODO: Add your initialization logic here
-		Window.Title = "Mega game";
+		Window.Title = "Негры все пидарасы ебанные бляяяяяяяяяяяяяяять";
 		base.Initialize();
 	}
 	
