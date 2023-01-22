@@ -7,7 +7,8 @@ namespace Client.Game;
 
 public class LocalPlayer : Player
 {
-	private Texture2D _sprite;
+	public Texture2D Sprite { get; set;}
+	public Vector2 Size { get; set;}
 	public Vector2 Velocity { get; set; } = Vector2.Zero;
 	
 	public Vector2 Speed { get; set; } = new Vector2(100f, 100f);
@@ -15,7 +16,7 @@ public class LocalPlayer : Player
 
 	public LocalPlayer(Microsoft.Xna.Framework.Game game) : base(game)
 	{
-
+		Size = new Vector2(40, 60);
 	}
 
 	static public Vector2 NormalizeVelocity(Vector2 velocity, Vector2 maxVelocity, float deltaTime)
@@ -63,14 +64,14 @@ public class LocalPlayer : Player
 	protected override void LoadContent()
 	{
 		var content = Game.Content;
-		_sprite = content.Load<Texture2D>("Textures/Player");
+		Sprite = content.Load<Texture2D>("Textures/Player");
 		base.LoadContent();
 	}
 
 	public override void Draw(GameTime gameTime)
 	{
 		spriteBatch.Begin(transformMatrix: Game1.GetCamera(Game).Transform);
-		spriteBatch.Draw(_sprite, new Rectangle((int)Position.X, (int)Position.Y, 40, 60), Color.White);
+		spriteBatch.Draw(Sprite, new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y), Color.White);
 		spriteBatch.End();
 
 		base.Draw(gameTime);

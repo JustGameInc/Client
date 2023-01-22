@@ -23,6 +23,8 @@ public class Game1 : Microsoft.Xna.Framework.Game
 
 		Components.Add(Camera);
 		Components.Add(LocalPlayer);
+
+		Components.Add(new Game.Box(this));
 	}
 
 	protected override void Initialize()
@@ -43,6 +45,9 @@ public class Game1 : Microsoft.Xna.Framework.Game
 	{
 		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 			Exit();
+
+		Camera.Bounds = GraphicsDevice.Viewport.Bounds;
+		Camera.Position = LocalPlayer.Position + LocalPlayer.Size;
 
 		base.Update(gameTime);
 	}

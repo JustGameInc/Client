@@ -8,7 +8,7 @@ public class Camera : GameComponent
 
 	public Vector2 Position { get; set; }
 	public Vector2 Rotation { get; set; }
-	public Rectangle Bounds { get; protected set; }
+	public Rectangle Bounds { get; set; }
 	public Rectangle VisibleArea { get; set; }
 	public Matrix Transform { get; protected set; }
 
